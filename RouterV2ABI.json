@@ -32,6 +32,11 @@
           "internalType": "struct RouterParameters",
           "name": "params",
           "type": "tuple"
+        },
+        {
+          "internalType": "address",
+          "name": "v3Executor",
+          "type": "address"
         }
       ],
       "stateMutability": "nonpayable",
@@ -71,31 +76,6 @@
         }
       ],
       "name": "ExecutionFailed",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "FromAddressIsNotOwner",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "GmxAlreadyPaidTokenIn",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "GmxInvalidPath",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "GmxTooLittleReceived",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "GmxTooMuchRequested",
       "type": "error"
     },
     {
@@ -141,16 +121,6 @@
     },
     {
       "inputs": [],
-      "name": "InvalidPath",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "InvalidReserves",
-      "type": "error"
-    },
-    {
-      "inputs": [],
       "name": "InvalidSpender",
       "type": "error"
     },
@@ -166,62 +136,12 @@
     },
     {
       "inputs": [],
-      "name": "SliceOutOfBounds",
-      "type": "error"
-    },
-    {
-      "inputs": [],
       "name": "TransactionDeadlinePassed",
       "type": "error"
     },
     {
       "inputs": [],
       "name": "UnsafeCast",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "V2InvalidFee",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "V2InvalidPath",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "V2TooLittleReceived",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "V2TooMuchRequested",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "V3InvalidAmountOut",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "V3InvalidCaller",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "V3InvalidSwap",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "V3TooLittleReceived",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "V3TooMuchRequested",
       "type": "error"
     },
     {
@@ -244,47 +164,8 @@
       "type": "event"
     },
     {
-      "inputs": [
-        {
-          "internalType": "bytes",
-          "name": "commands",
-          "type": "bytes"
-        },
-        {
-          "internalType": "bytes[]",
-          "name": "inputs",
-          "type": "bytes[]"
-        },
-        {
-          "internalType": "address",
-          "name": "tokenIn",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "tokenOut",
-          "type": "address"
-        },
-        {
-          "internalType": "uint64",
-          "name": "tradeType",
-          "type": "uint64"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "deadline",
-          "type": "uint256"
-        }
-      ],
-      "name": "execute",
-      "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "fallback"
     },
     {
       "inputs": [
@@ -294,9 +175,34 @@
           "type": "bytes"
         },
         {
+          "internalType": "address[]",
+          "name": "executors",
+          "type": "address[]"
+        },
+        {
           "internalType": "bytes[]",
           "name": "inputs",
           "type": "bytes[]"
+        },
+        {
+          "internalType": "uint64",
+          "name": "feeFA",
+          "type": "uint64"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "r",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "s",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint8",
+          "name": "v",
+          "type": "uint8"
         },
         {
           "internalType": "address",
@@ -319,52 +225,9 @@
           "type": "uint256"
         },
         {
-          "internalType": "address",
-          "name": "user",
-          "type": "address"
-        }
-      ],
-      "name": "execute",
-      "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes",
-          "name": "commands",
-          "type": "bytes"
-        },
-        {
-          "internalType": "bytes[]",
-          "name": "inputs",
-          "type": "bytes[]"
-        },
-        {
-          "internalType": "address",
-          "name": "tokenIn",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "tokenOut",
-          "type": "address"
-        },
-        {
-          "internalType": "uint64",
-          "name": "tradeType",
-          "type": "uint64"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "totalAmount",
-          "type": "uint256"
+          "internalType": "string",
+          "name": "referrer",
+          "type": "string"
         },
         {
           "internalType": "uint256",
@@ -372,7 +235,7 @@
           "type": "uint256"
         }
       ],
-      "name": "executeArbTradeBack",
+      "name": "execute",
       "outputs": [],
       "stateMutability": "payable",
       "type": "function"
@@ -398,6 +261,25 @@
           "internalType": "address",
           "name": "",
           "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "name": "globalData",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
         }
       ],
       "stateMutability": "view",
@@ -544,24 +426,20 @@
     {
       "inputs": [
         {
-          "internalType": "int256",
-          "name": "amount0Delta",
-          "type": "int256"
-        },
-        {
-          "internalType": "int256",
-          "name": "amount1Delta",
-          "type": "int256"
-        },
-        {
-          "internalType": "bytes",
-          "name": "data",
-          "type": "bytes"
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
         }
       ],
-      "name": "pancakeV3SwapCallback",
-      "outputs": [],
-      "stateMutability": "nonpayable",
+      "name": "registeredFallbacks",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -593,6 +471,24 @@
         }
       ],
       "name": "setOperator",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "referralName",
+          "type": "string"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_feeReceiver",
+          "type": "address"
+        }
+      ],
+      "name": "setReferralReceiver",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -632,24 +528,45 @@
     {
       "inputs": [
         {
-          "internalType": "int256",
-          "name": "amount0Delta",
-          "type": "int256"
+          "internalType": "bytes4",
+          "name": "funcSignature",
+          "type": "bytes4"
         },
         {
-          "internalType": "int256",
-          "name": "amount1Delta",
-          "type": "int256"
-        },
-        {
-          "internalType": "bytes",
-          "name": "data",
-          "type": "bytes"
+          "internalType": "address",
+          "name": "_fallback",
+          "type": "address"
         }
       ],
-      "name": "uniswapV3SwapCallback",
+      "name": "updateRegisteredFallback",
       "outputs": [],
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "v2Executor",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "v3Executor",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
       "type": "function"
     },
     {
